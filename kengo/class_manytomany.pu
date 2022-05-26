@@ -6,7 +6,7 @@ skinparam shadowing false
 
 ' クラスを定義
 class 生徒{
-    部活動
+    部活動名
     学籍番号
     氏名
 }
@@ -22,7 +22,7 @@ class 顧問{
 ' 関係を定義 
 left to right direction
 生徒 "1...*" --- "1...*" 部活
-部活 "0...*" --- "1" 顧問
+部活 "0...1" --- "1" 顧問
 
 ' umlの終了を宣言
 @enduml
