@@ -1,0 +1,30 @@
+@startuml class_diagram
+' 多対多のクラス図の例
+
+skinparam monochrome true
+skinparam shadowing false
+
+' クラスを定義
+class 先生{
+    名前
+    部活
+}
+
+class 部活{
+  部活名
+    顧問
+    生徒
+    }
+
+class 生徒{
+    名前
+    部活
+}
+
+' 関係を定義 
+left to right direction
+先生 "1" --- "0...1" 部活
+部活 "1...*" --- "1...*" 生徒
+
+' umlの終了を宣言
+@enduml
