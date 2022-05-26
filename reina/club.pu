@@ -1,0 +1,14 @@
+@startuml class_diagram
+' 演習(部活動の管理)
+
+' クラスを定義 
+class クラス名{
+    属性
+}
+
+
+' 関係を定義
+
+
+' umlの終了を宣言
+@enduml

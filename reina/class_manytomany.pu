@@ -1,0 +1,32 @@
+@startuml class_diagram
+' 多対多のクラス図の例
+
+skinparam monochrome true
+skinparam shadowing false
+
+' クラスを定義
+class レンタカー{
+    ID
+    メーカー
+    車種
+}
+
+class レンタル{
+    レンタカーID
+    ユーザID
+    料金
+}
+
+class ユーザ{
+    ID
+    名前
+    免許証番号
+}
+
+' 関係を定義 
+left to right direction
+レンタカー "1" --- "0...*" レンタル
+レンタル "0...*" --- "1" ユーザ
+
+' umlの終了を宣言
+@enduml
