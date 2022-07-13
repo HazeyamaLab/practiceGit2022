@@ -1,0 +1,51 @@
+@startuml  sequence_create
+
+title Data resist
+hide footbox
+'これで囲むとコメントをかけます'
+
+'登場するオブジェクトを宣言 as でpuファイル上の略称を設定'
+actor User as user
+participant registUser.jsp as registUser
+participant RegistUser as controller
+participant RegistUserService as service
+participant RegistUserDAO as dao
+database infomations as informations
+
+'やじるしを記述'
+user -> registUser : 1:[送信]ボタンを押す
+'矢印の先端から四角をactivateで生成'
+activate registUser
+
+'矢印を発生'
+registUser -> controller : 1.1:post(String id, content) 
+'矢印の根本=四角の終了をdeactivateで記述'
+
+activate controller
+
+controller -> registUser : 2.1 primary key(String id)
+controller -> service : 2.2:registUser(User registUser)
+activate service
+deactivate registUser
+
+'メソッド名はCamelCaseで基本書きます'
+service -> dao : 3:RegistUser(User registUser Connection)
+activate dao
+
+
+dao -> informations : 4: update user info(String id, content)
+
+activate informations
+informations -> dao
+deactivate informations
+'戻りの場合はdeactivateが根本側になるのに注意'
+dao -> service : 
+deactivate dao
+
+service -> controller : 
+deactivate service
+
+controller -> user :
+deactivate controller
+
+@enduml
